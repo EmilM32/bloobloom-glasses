@@ -54,14 +54,16 @@ export interface Glasses {
   meta: MetaData;
 }
 
+export interface GlassMedia {
+  id: number;
+  url: string;
+  position: number;
+};
+
 export interface GlassVariant {
   id: number;
   default_glass_variant: boolean;
-  media: {
-    id: number;
-    url: string;
-    position: number;
-  }[];
+  media: GlassMedia[];
 }
 
 export interface Glass {
