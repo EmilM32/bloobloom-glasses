@@ -4,9 +4,13 @@ import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import AppFilters from './AppFilters.vue';
 import { AvailableFilters } from '@/interfaces';
+import { useFiltersStore } from '@/stores/useFilters';
 
 const route = useRoute();
 const { category } = route.params;
+
+const filtersStore = useFiltersStore();
+filtersStore.setCategory(category as string);
 
 const collectionStore = useCollectionsStore();
 

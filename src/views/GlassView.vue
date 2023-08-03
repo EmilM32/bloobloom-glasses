@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { Colour, Shape, type Glasses } from '@/interfaces';
+import { type Glasses } from '@/interfaces';
 import { useCollectionsStore } from '@/stores/useCollections';
 import { buildCollectionUrl } from '@/utils/collection-url';
 import { useFetch } from '@vueuse/core';
-import { useRoute } from 'vue-router';
 import SingleGlassItem from '@/components/SingleGlassItem.vue';
+import { useFiltersStore } from '@/stores/useFilters';
 
 const collectionStore = useCollectionsStore();
 const collections = collectionStore.getCollections;
 
-const route = useRoute();
-const { category } = route.params;
+const filtersStore = useFiltersStore();
+const category = filtersStore.getCategory;
 
 const url = buildCollectionUrl(category as string, {
   page: {
