@@ -16,6 +16,11 @@ export enum Shape {
   CatEye = 'cat-eye'
 }
 
+export enum AvailableFilters {
+  Colour = 'colour',
+  Shape = 'shape'
+}
+
 // Define the query parameters for the collections endpoint
 export interface CollectionQueryParams {
   page: Page;
