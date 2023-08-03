@@ -1,24 +1,38 @@
-import type { Collection, Glass } from '@/interfaces';
+import type { Collection, Glass, Glasses } from '@/interfaces';
+import { useFetch } from '@vueuse/core';
 import { defineStore } from 'pinia';
 
 interface CollectionsState {
-  collections: Collection[];
-  glasses: Glass[];
+  _collections: Collection[];
+  _glasses: Glass[];
 }
 
 export const useCollectionsStore = defineStore('collections', {
   state: (): CollectionsState => ({
-    collections: [],
-    glasses: []
+    _collections: [],
+    _glasses: []
   }),
   getters: {
-    getCollections: (state) => {
-      return state.collections;
-    }
+    collections: (state) => {
+      return state._collections;
+    },
+    glasses: (state) => {
+      return state._glasses;
+    },
   },
   actions: {
     setCollections(collections: Collection[]) {
-      this.collections = collections;
-    }
+      this._collections = collections;
+    },
+    async fetchGlasses(url: string) {
+      try {
+        const { data } = await useFetch<Glasses>(url).json();
+        this._glasses = data.value.glasses;
+      } catch (error) {
+        let message = 'Something went wrong';
+        if (error instanceof Error) message = error.message;
+        throw new Error(message);
+      }
+    },
   },
 })

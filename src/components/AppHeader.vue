@@ -14,7 +14,7 @@ filtersStore.setCategory(category as string);
 
 const collectionStore = useCollectionsStore();
 
-const collections = collectionStore.getCollections;
+const collections = collectionStore.collections;
 
 const collectionTitle = collections.find((collection) => collection.configuration_name === category)?.name || 'Not found';
 

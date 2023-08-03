@@ -1,43 +1,43 @@
 import { defineStore } from 'pinia';
 
 interface FiltersState {
-  category: string;
-  colours: string[];
-  shapes: string[];
+  _category: string;
+  _colours: string[];
+  _shapes: string[];
 }
 
 export const useFiltersStore = defineStore('filters', {
   state: (): FiltersState => ({
-    category: '',
-    colours: [],
-    shapes: [],
+    _category: '',
+    _colours: [],
+    _shapes: [],
   }),
   getters: {
-    getCategory: (state) => {
-      return state.category;
+    category: (state) => {
+      return state._category;
     },
-    getColours: (state) => {
-      return state.colours;
+    colours: (state) => {
+      return state._colours;
     },
-    getShapes: (state) => {
-      return state.shapes;
+    shapes: (state) => {
+      return state._shapes;
     },
   },
   actions: {
     setCategory(category: string) {
-      this.category = category;
+      this._category = category;
     },
     addColour(colour: string) {
-      this.colours.push(colour);
+      this._colours.push(colour);
     },
     removeColour(colour: string) {
-      this.colours = this.colours.filter((c) => c !== colour);
+      this._colours = this._colours.filter((c) => c !== colour);
     },
     addShape(shape: string) {
-      this.shapes.push(shape);
+      this._shapes.push(shape);
     },
     removeShape(shape: string) {
-      this.shapes = this.shapes.filter((s) => s !== shape);
+      this._shapes = this._shapes.filter((s) => s !== shape);
     },
   },
 })

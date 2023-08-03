@@ -17,7 +17,7 @@ const items = computed<string[]>(() => {
 });
 
 const filtersStore = useFiltersStore();
-const filters = computed(() => props.activeFilter === AvailableFilters.Colour ? filtersStore.getColours : filtersStore.getShapes);
+const filters = computed(() => props.activeFilter === AvailableFilters.Colour ? filtersStore.colours : filtersStore.shapes);
 const addFilter = computed(() => props.activeFilter === AvailableFilters.Colour ? filtersStore.addColour : filtersStore.addShape);
 const removeFilter = computed(() => props.activeFilter === AvailableFilters.Colour ? filtersStore.removeColour : filtersStore.removeShape);
 
@@ -46,7 +46,7 @@ const showUnderline = (item: string): boolean => {
 </script>
 
 <template>
-  <div class="flex gap-4 justify-evenly pt-5 pb-5">
+  <div class="md:flex gap-4 md:justify-evenly pt-5 pb-5 flex-wrap grid grid-cols-2 text-center">
     <span v-for="item in items" :key="`filter-${item}`" class="cursor-pointer"
       :class="{ 'underline': showUnderline(item) }" @click="toggleFilter(item)">
       {{ item }}

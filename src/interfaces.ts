@@ -35,8 +35,8 @@ export interface Page {
 
 // Define the structure of the Filters object
 export interface Filters {
-  colour: Colour[];
-  shape: Shape[];
+  colour: string[];
+  shape: string[];
 }
 
 export interface MetaData {
