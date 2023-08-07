@@ -1,5 +1,11 @@
+<script setup lang="ts">
+defineProps<{
+  fixed?: boolean;
+}>();
+</script>
+
 <template>
-  <div class="fixed inset-0 flex items-center justify-center bg-gray-200 bg-opacity-75">
+  <div :class="{ 'fixed': fixed }" class="inset-0 flex items-center justify-center bg-gray-200 bg-opacity-75">
     <svg class="animate-spin h-12 w-12 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
       <path class="opacity-75" fill="currentColor"
