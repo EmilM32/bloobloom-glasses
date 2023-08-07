@@ -19,6 +19,6 @@ onFetchFinally(() => {
 
 <template>
   <AppHeader v-if="!isFetching" />
-  <AppLoading v-if="isFetching" />
+  <AppLoading v-if="isFetching" fixed />
   <RouterView v-else />
 </template>
