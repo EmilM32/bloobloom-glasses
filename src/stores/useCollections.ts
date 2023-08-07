@@ -22,6 +22,17 @@ export const useCollectionsStore = defineStore('collections', {
     collections: (state) => {
       return state._collections;
     },
+    collectionsSerialized: (state) => {
+      const sunglasses = state._collections.filter((collection) => {
+        return collection.configuration_name.includes('sunglasses') && !collection.configuration_name.includes('all');
+      });
+
+      const spectacles = state._collections.filter((collection) => {
+        return collection.configuration_name.includes('spectacles') && !collection.configuration_name.includes('all');
+      });
+
+      return { sunglasses, spectacles };
+    },
     glasses: (state) => {
       return state._glasses;
     },

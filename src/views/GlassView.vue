@@ -8,8 +8,6 @@ import { ITEMS_PER_PAGE } from '@/constans';
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 
 const collectionStore = useCollectionsStore();
-const collections = collectionStore.collections;
-
 const filtersStore = useFiltersStore();
 
 const getCollectionUrl = () => {
