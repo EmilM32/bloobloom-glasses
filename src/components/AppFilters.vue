@@ -1,7 +1,28 @@
 <script setup lang="ts">
 import { AvailableFilters, Colour, Shape } from '@/interfaces';
 import { useFiltersStore } from '@/stores/useFilters';
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
+import { useUrlSearchParams } from '@vueuse/core'
+
+onMounted(() => {
+  const params = useUrlSearchParams();
+  const colourParams = params.colour as string;
+  const shapeParams = params.shape as string;
+
+  if (colourParams) {
+    const colours = colourParams.split(',');
+    colours.forEach((colour) => {
+      filtersStore.addColour(colour);
+    });
+  }
+
+  if (shapeParams) {
+    const shapes = shapeParams.split(',');
+    shapes.forEach((shape) => {
+      filtersStore.addShape(shape);
+    });
+  }
+});
 
 const props = defineProps<{
   activeFilter?: AvailableFilters;

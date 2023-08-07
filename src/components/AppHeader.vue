@@ -3,6 +3,7 @@ import { useCollectionsStore } from '@/stores/useCollections';
 import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import AppFilters from './AppFilters.vue';
+import AppNavigation from './AppNavigation.vue';
 import { AvailableFilters } from '@/interfaces';
 import { useFiltersStore } from '@/stores/useFilters';
 
@@ -10,13 +11,15 @@ const route = useRoute();
 const { category } = route.params;
 
 const filtersStore = useFiltersStore();
+
 filtersStore.setCategory(category as string);
 
 const collectionStore = useCollectionsStore();
-
 const collections = collectionStore.collections;
 
-const collectionTitle = collections.find((collection) => collection.configuration_name === category)?.name || 'Not found';
+const getTitleByKey = (key: string): string => {
+  return collections.find((collection) => collection.configuration_name === key)?.name || 'Not found';
+};
 
 const colourFilterActive = ref(false);
 const shapeFilterActive = ref(false);
@@ -40,14 +43,13 @@ const activeFilter = computed<AvailableFilters | undefined>(() => {
 </script>
 
 <template>
-  <div class="h-14 border-black border-b flex items-center justify-between">
-    <div class="ml-10 hover:underline cursor-pointer">MENU</div>
-  </div>
-  <div class="grid md:grid-cols-3 grid-cols-1 border-black border-b">
+  <AppNavigation />
+
+  <div class="grid md:grid-cols-3 grid-cols-1 border-black border-b mt-14">
     <div class="hidden md:block"></div>
     <div
       class="p-3 text-3xl font-bold flex justify-center items-center border-black md:border-r md:border-l border-b md:border-b-0">
-      {{ collectionTitle }}
+      {{ getTitleByKey(filtersStore.category) }}
     </div>
     <div class="flex flex-row">
       <div @click="toggleColourFilter"
