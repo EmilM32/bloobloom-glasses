@@ -1,6 +1,12 @@
 import { BASE_URL } from '@/constans'
 import type { CollectionQueryParams } from '../interfaces'
 
+/**
+ * Builds a URL for a collection of glasses based on the given category and query parameters.
+ * @param category - The category of glasses to retrieve.
+ * @param params - The query parameters to use when building the URL.
+ * @returns The URL for the collection of glasses.
+ */
 export function buildCollectionUrl(category: string, params: CollectionQueryParams): string {
   const url = new URL(`${BASE_URL}/${category}/glasses`)
 

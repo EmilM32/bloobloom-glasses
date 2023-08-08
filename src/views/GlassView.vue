@@ -44,7 +44,7 @@ const isLoading = computed<boolean>(() => {
 })
 
 const handleScroll = () => {
-  let element = scrollComponent.value!
+  const element = scrollComponent.value!
   if (element.getBoundingClientRect().bottom <= window.innerHeight + 150 && !isLoading.value) {
     collectionStore.incrementPage()
     collectionStore.fetchMoreGlasses(getCollectionUrl())
