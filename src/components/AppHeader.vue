@@ -50,7 +50,7 @@ const activeFilter = computed<AvailableFilters | undefined>(() => {
   <div class="grid md:grid-cols-3 grid-cols-1 border-black border-b mt-14">
     <div class="hidden md:block"></div>
     <div
-      class="p-3 text-3xl font-bold flex justify-center items-center border-black md:border-r md:border-l border-b md:border-b-0"
+      class="p-3 text-3xl font-bold flex justify-center items-center text-center border-black md:border-r md:border-l border-b md:border-b-0"
     >
       {{ getTitleByKey(filtersStore.category) }}
     </div>
