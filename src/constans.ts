@@ -1,5 +1,5 @@
-export const BASE_URL = import.meta.env.VITE_API_URL;
+export const BASE_URL = import.meta.env.VITE_API_URL
 
-export const DEFAULT_CATEGORY = 'spectacles-women';
+export const DEFAULT_CATEGORY = 'spectacles-women'
 
-export const ITEMS_PER_PAGE = 12;
+export const ITEMS_PER_PAGE = 12

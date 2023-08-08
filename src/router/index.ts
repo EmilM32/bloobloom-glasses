@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import GlassView from '../views/GlassView.vue';
-import { DEFAULT_CATEGORY } from '@/constans';
+import { createRouter, createWebHistory } from 'vue-router'
+import GlassView from '../views/GlassView.vue'
+import { DEFAULT_CATEGORY } from '@/constans'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,7 +13,7 @@ const router = createRouter({
         params: {
           category: DEFAULT_CATEGORY
         }
-      },
+      }
     },
     {
       path: '/:category',
@@ -21,6 +21,6 @@ const router = createRouter({
       component: GlassView
     }
   ]
-});
+})
 
-export default router;
+export default router
