@@ -23,15 +23,20 @@ const getCollectionUrl = () => {
   })
 }
 
-watch(filtersStore, () => {
+const fetchCollection = () => {
   collectionStore.resetPage()
   collectionStore.resetTotalCount()
   collectionStore.fetchGlasses(getCollectionUrl())
+}
+
+watch(filtersStore, () => {
+  fetchCollection()
 })
 
 const scrollComponent = ref<HTMLElement | null>(null)
 
 onMounted(() => {
+  fetchCollection()
   window.addEventListener('scroll', handleScroll)
 })
 
